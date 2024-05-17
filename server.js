@@ -24,7 +24,7 @@ app.post('/sendEmail', (req, res) => {
     from: `${header} <websites.sicu.aura@gmail.com>`,
     to: to,
     subject: subject,
-    // cc: 'sicu.aura.official@gmail.com',
+    cc: 'sicu.aura.official@gmail.com',
     text: text,
     html: html,
   };
