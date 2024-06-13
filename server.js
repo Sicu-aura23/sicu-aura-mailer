@@ -14,15 +14,18 @@ const transporter = nodemailer.createTransport({
 });
 
 app.use(express.json());
-app.use(cors()); // Use CORS middleware
+app.use(cors());
 
-// POST endpoint 
+// mailer
 app.post('/sendEmail', (req, res) => {
   const { to, subject, text, html, header } = req.body;
 
+
+  const recipients = to.split(',').map(email => email.trim());
+
   const mailOptions = {
     from: `${header} <websites.sicu.aura@gmail.com>`,
-    to: to,
+    to: recipients.join(','), 
     subject: subject,
     cc: 'sicu.aura.official@gmail.com',
     text: text,
